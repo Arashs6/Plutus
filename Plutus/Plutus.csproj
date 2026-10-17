@@ -7,4 +7,14 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Plutus.Domain\**" />
+    <EmbeddedResource Remove="Plutus.Domain\**" />
+    <None Remove="Plutus.Domain\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Plutus.Application\Plutus.Application.csproj" />
+  </ItemGroup>
+
 </Project>
