@@ -14,7 +14,7 @@ public class PaymentService : ICommandHandler<PaymentOrderCreatedCommand>
 	public async Task Handle (PaymentOrderCreatedCommand command)
 	{
 		var paymentGateway =  _gatewayFactory.CreatePaymentGateway(command.Type);
-		var payment = await paymentGateway.Pay(command);
+		var payment = await paymentGateway.Pay(command.Amount);
 		if (payment.Status == PaymentStatus.Success)
 		{
 			var settlementResult = await _settlementService.Settle(command);
@@ -46,14 +46,14 @@ public enum PaymentStatus
 public interface IPaymentGateway
 {
 	public GatewayType GatewayType { get;  }
-	Task<PaymentResult> Pay (PaymentOrderCreatedCommand command);
+	Task<PaymentResult> Pay (Decimal amount);
 }
 
 public class MellatGateway : IPaymentGateway
 {
 	public GatewayType GatewayType => GatewayType.Mellat;
 
-	public Task<PaymentResult> Pay (PaymentOrderCreatedCommand command)
+	public Task<PaymentResult> Pay(decimal amount)
 	{
 		throw new NotImplementedException();
 	}
@@ -62,7 +62,7 @@ public class SamanGateway : IPaymentGateway
 {
 	public GatewayType GatewayType => GatewayType.Saman;
 
-	public Task<PaymentResult> Pay (PaymentOrderCreatedCommand command)
+	public Task<PaymentResult> Pay(decimal amount)
 	{
 		throw new NotImplementedException();
 	}
@@ -71,7 +71,7 @@ public class PasargadGateway : IPaymentGateway
 {
 	public GatewayType GatewayType => GatewayType.Pasargad;
 
-	public Task<PaymentResult> Pay (PaymentOrderCreatedCommand command)
+	public Task<PaymentResult> Pay(decimal amount)
 	{
 		throw new NotImplementedException();
 	}
