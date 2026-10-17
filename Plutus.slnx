@@ -1,3 +1,5 @@
 <Solution>
+  <Project Path="Plutus.Application/Plutus.Application.csproj" Id="f94fb2a9-7956-4d20-ba7c-cb3d2d993e6c" />
   <Project Path="Plutus/Plutus.csproj" />
+  <Project Path="Plutus/Plutus.Domain/Plutus.Domain.csproj" Id="2477c5b6-5aa1-4393-9a49-3413eaa71f4d" />
 </Solution>
