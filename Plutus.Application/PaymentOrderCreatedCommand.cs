@@ -6,10 +6,3 @@ public class PaymentOrderCreatedCommand : ICommand
 	public decimal Amount { get; set; }
 	public GatewayType Type { get; set; }
 }
-
-public enum GatewayType
-{
-	Mellat,
-	Saman,
-	Pasargad
-}
