@@ -36,4 +36,18 @@ public class PaymentTests
         act.Should().Throw<DomainException>()
             .WithMessage("Money cannot be null.");
     }
+
+    [Fact]
+    public void Constructor_WhenMoneyAmountIsZero_ShouldThrowDomainException()
+    {
+        // Arrange
+        var zeroMoney = Money.Zero("IRR");
+
+        // Act
+        var act = () => new Payment(zeroMoney);
+
+        // Assert
+        act.Should().Throw<DomainException>()
+            .WithMessage("Payment amount must be greater than zero.");
+    }
 }

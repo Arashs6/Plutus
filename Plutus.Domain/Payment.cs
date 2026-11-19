@@ -12,16 +12,14 @@ public class Payment
 
     public Payment(Money money, TimeProvider? timeProvider = null)
     {
+        Money = DomainException.ThrowIfNull(money, "Money cannot be null.");
+        DomainException.ThrowIf(money.Amount <= 0, "Payment amount must be greater than zero.");
 
         Id = Guid.CreateVersion7();
-        Money = money ?? throw new DomainException("Money cannot be null.");
         CreatedAt = (timeProvider ?? TimeProvider.System).GetUtcNow();
     }
 
     public Guid Id { get; private set; }
     public Money Money { get; private set; }
-    public DateTimeOffset CreatedAt { get; init; }
-}
-public class DomainException(string message) : Exception(message)
-{
+    public DateTimeOffset CreatedAt { get; private init; }
 }
