@@ -1,4 +1,6 @@
-﻿namespace Plutus.Application;
+﻿using Plutus.Application.Gateway;
+
+namespace Plutus.Application.Commands;
 
 public class PaymentOrderCreatedCommand : ICommand
 {

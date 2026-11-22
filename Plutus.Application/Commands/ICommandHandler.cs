@@ -1,4 +1,4 @@
-﻿namespace Plutus.Application;
+﻿namespace Plutus.Application.Commands;
 
 public interface ICommandHandler<T> where T: ICommand
 {
